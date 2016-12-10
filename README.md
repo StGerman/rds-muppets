@@ -36,3 +36,14 @@ GET: http://localhost:3000/girls/redfenf/emoji/new.json
 POST: http://localhost:3000/girls/redfenf/emoji.json
 Постить можно все что угодно входящие параметры мы не проверяем
 Если все прошло хорошо status: 200
+
+### Доступы в базу
+
+```
+cat .env
+
+# Здесь пишем логин своего пользователя
+PGUSER=postgres
+# Пароль можно оставить пустым
+PGPASS=postgres
+```

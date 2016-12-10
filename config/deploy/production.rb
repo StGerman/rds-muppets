@@ -7,7 +7,7 @@ server 'striphack.dev', user: 'striphack', roles: %w{app db web}
 
 set :rails_env, 'production'
 
-set :default_env, fetch(:default_env).merge(rails_env: :production)
+set :default_env, fetch(:default_env).merge('PGHOST': 'localhost', rails_env: :production)
 
 # role-based syntax
 # ==================
