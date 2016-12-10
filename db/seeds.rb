@@ -6,3 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@striphack.com', password: '12345678', password_confirmation: '12345678')
+
+girls = [
+  { nickname: 'Alisa',    photo_url: 'http://goldengirls.ru/upload/iblock/f3d/alisa.jpg' },
+  { nickname: 'Michelle', photo_url: 'http://goldengirls.ru/upload/iblock/4c6/gallery2.jpg' },
+  { nickname: 'Andrea',   photo_url: 'http://goldengirls.ru/upload/iblock/217/gallery3.jpg' },
+  { nickname: 'Susan',    photo_url: 'http://goldengirls.ru/upload/iblock/5ad/gallery4.jpg' },
+  { nickname: 'Jessica',  photo_url: 'http://goldengirls.ru/upload/iblock/734/gallery5.jpg' }
+]
+
+Girl.create(girls)
