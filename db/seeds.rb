@@ -29,3 +29,5 @@ Girl.create(girls)
     kind: kind
   )
 end if Emoji.count < 50
+
+5.times { VisitCode.create } if VisitCode.count < 5
