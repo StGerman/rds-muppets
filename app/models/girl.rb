@@ -6,6 +6,10 @@ class Girl < ApplicationRecord
 
   has_many :emojis
 
+  def to_s
+    nickname
+  end
+
   private
 
   def set_slug
