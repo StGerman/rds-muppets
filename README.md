@@ -1,5 +1,8 @@
 # Анонимный оффлайновый инстаграм
 
+### Данные для новой эмоджи
+http://localhost:3000/girls/redfenf/emoji/new.json
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
