@@ -12,30 +12,13 @@ var {
 
 import Camera from 'react-native-camera';
 
+var GirlPage = require('./GirlPage');
+
 var QRCodeScreen = React.createClass({
 
   propTypes: {
-    cancelButtonVisible: React.PropTypes.bool,
-    cancelButtonTitle: React.PropTypes.string,
     onSucess: React.PropTypes.func,
-    onCancel: React.PropTypes.func,
-  },
-
-  getDefaultProps: function() {
-    return {
-      cancelButtonVisible: false,
-      cancelButtonTitle: 'Cancel',
-    };
-  },
-
-  _onPressCancel: function() {
-    var $this = this;
-    requestAnimationFrame(function() {
-      $this.props.navigator.pop();
-      if ($this.props.onCancel) {
-        $this.props.onCancel();
-      }
-    });
+    onCancel: React.PropTypes.func
   },
 
   _onBarCodeRead: function(result) {
@@ -44,21 +27,18 @@ var QRCodeScreen = React.createClass({
     if (this.barCodeFlag) {
       this.barCodeFlag = false;
 
-      setTimeout(function() {
-        VibrationIOS.vibrate();
-        $this.props.navigator.pop();
-        $this.props.onSucess(result.data);
-      }, 1000);
+      VibrationIOS.vibrate();
+      $this.props.navigator.push({
+        component: GirlPage,
+        title: 'GirlPage'
+      });
+      // $this.props.onSucess(result.data);
     }
   },
 
   render: function() {
     var cancelButton = null;
     this.barCodeFlag = true;
-    
-    if (this.props.cancelButtonVisible) {
-      cancelButton = <CancelButton onPress={this._onPressCancel} title={this.props.cancelButtonTitle} />;
-    }
 
     return (
       <Camera onBarCodeRead={this._onBarCodeRead} style={styles.camera}>
