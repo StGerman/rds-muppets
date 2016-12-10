@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: rds-muppets_production
-  username: rds-muppets
-  password: <%= ENV['RDS-MUPPETS_DATABASE_PASSWORD'] %>
+  database: muppets_production
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
