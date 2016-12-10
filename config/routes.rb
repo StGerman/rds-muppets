@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :girls, only: :index do
-    resource :emoji, only: [:new, :create]
+  resources :girls, only: :index, defaults: { format: :json } do
+    resource :emoji, only: [:new, :create], defaults: { format: :json }
   end
 
-  resources :visits, only: [:create], format: [:json]
-  resources :ratings, only: [:index], format: [:json]
+  resources :visits, only: [:create], defaults: { format: :json }
+  resources :ratings, only: [:index], defaults: { format: :json }
 end
