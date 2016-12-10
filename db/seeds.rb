@@ -20,3 +20,5 @@ girls = [
 ]
 
 Girl.create(girls)
+
+5.times { VisitCode.create } if VisitCode.count < 5
