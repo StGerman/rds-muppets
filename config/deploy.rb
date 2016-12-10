@@ -12,6 +12,7 @@ set :deploy_to, '/home/striphack/app'
 
 # Default value for :format is :airbrussh.
 set :format, :airbrussh
+set :assets_roles, [:web, :app]
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
