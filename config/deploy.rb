@@ -38,7 +38,7 @@ set :ssh_options, forward_agent: true
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
 # append :rbenv_map_bins, 'rake', 'gem', 'bundle', 'ruby', 'rails'
-# append :bundle_bins, 'eye', 'bundle'
+append :bundle_bins, 'eye'
 
 set :eye_env, -> { { rails_env: fetch(:rails_env) } }
 set :eye_config, -> { "#{current_path}/config/eye.rb" }
