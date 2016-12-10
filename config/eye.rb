@@ -13,7 +13,7 @@ end
 Eye.application 'muppets' do
   working_dir ROOT_PATH.to_s
 
-  load_env '.env.local'
+  load_env '.env'
 
   env('RAILS_ENV'     => env['RAILS_ENV'] || 'development',
       'RBENV_ROOT'    => '~/.rbenv/',
