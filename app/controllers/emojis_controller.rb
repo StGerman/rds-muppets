@@ -1,2 +1,4 @@
 class EmojisController < ApplicationController
+
+
 end
