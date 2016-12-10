@@ -80,8 +80,9 @@ test:
 #
 production:
   <<: *default
-  database: muppets_production
-  host: localhost
-  port: 5432
-  username: postgres
-  password: postgres
+  url: "postgres://postgres:postgres@localhost/muppets_production"
+  database: 'muppets_production'
+  host: 'localhost'
+  port: '5432'
+  username: 'postgres'
+  password: 'postgres'
