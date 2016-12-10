@@ -21,4 +21,13 @@ girls = [
 
 Girl.create(girls)
 
+50.times do
+  kind = Emoji.kinds.keys.map(&:to_sym).sample
+  Emoji.create(
+    user: User.all.to_a.sample,
+    girl: Girl.all.to_a.sample,
+    kind: kind
+  )
+end if Emoji.count < 50
+
 5.times { VisitCode.create } if VisitCode.count < 5
