@@ -26,7 +26,7 @@ Eye.application 'muppets' do
 
     daemonize true
 
-    start_command "bundle exec unicorn -c #{ROOT_PATH}/config/unicorn.rb -E #{env['RAILS_ENV']}"
+    start_command "bundle exec unicorn -c #{ROOT_PATH}/config/unicorn.rb -E production"
 
     # http://unicorn.bogomips.org/SIGNALS.html
     # soft restart
