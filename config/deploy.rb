@@ -5,7 +5,7 @@ set :application, 'striphack'
 set :repo_url, 'git@github.com:StGerman/rds-muppets.git'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/striphack/app'
@@ -31,25 +31,17 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/syst
 # but now this directory will grow with every release
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH" }
 
 set :ssh_options, forward_agent: true
 
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
-
-append :rbenv_map_bins, 'eye'
+# append :rbenv_map_bins, 'rake', 'gem', 'bundle', 'ruby', 'rails'
 # append :bundle_bins, 'eye', 'bundle'
-
-set :front_repo_url, fetch(:repo_url)
-set :front_branch, -> { ENV['FRONT_BRANCH'] || fetch(:branch) }
-set :front_files, %w(assets)
-set :front_build_task, 'build'
 
 set :eye_env, -> { { rails_env: fetch(:rails_env) } }
 set :eye_config, -> { "#{current_path}/config/eye.rb" }
 
 # Default value for keep_releases is 5
 set :keep_releases, 30
-
-set :slack_username, "Site_Deploy_#{fetch(:stage).capitalize}"
