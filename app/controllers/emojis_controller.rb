@@ -6,10 +6,10 @@ class EmojisController < ApplicationController
   end
 
   def create
-    girl.emojis.create!(user: user, kind: kind)
+    girl.emojis.create!(user: current_user, kind: kind)
 
     respond_to do |format|
-      format.json { emoji.to_json }
+      format.json { head :ok }
     end
   end
 
