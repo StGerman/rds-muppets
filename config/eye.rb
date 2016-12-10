@@ -15,7 +15,7 @@ Eye.application 'muppets' do
 
   load_env '.env'
 
-  env('RAILS_ENV'     => env['RAILS_ENV'] || 'development',
+  env('RAILS_ENV'     => env['RAILS_ENV'] || 'production',
       'RBENV_ROOT'    => '~/.rbenv/',
       'RBENV_VERSION' => RBENV_VERSION,
       'BUNDLE_GEMFILE' => "#{ROOT_PATH}/Gemfile")
