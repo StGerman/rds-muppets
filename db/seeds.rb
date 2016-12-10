@@ -36,7 +36,7 @@ end if Emoji.count < 50
   date = rand(30).days.ago
   Visit.create(
     user: User.all.to_a.sample,
-    visit_code: VisitCode.all.to_a.sample
+    visit_code: VisitCode.all.to_a.sample,
     created_at: date,
     updated_at: date,
   )
