@@ -37,9 +37,9 @@ set :ssh_options, forward_agent: true
 
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
-set :rbenv_map_bins, fetch(:rbenv_map_bins, []) + %w(eye)
 
-set :bundle_bins, fetch(:bundle_bins) + %w(eye)
+append :rbenv_map_bins, 'eye', 'bundle'
+append :bundle_bins, 'eye', 'bundle'
 
 set :front_repo_url, fetch(:repo_url)
 set :front_branch, -> { ENV['FRONT_BRANCH'] || fetch(:branch) }
