@@ -52,6 +52,9 @@ GEM
     capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-eye (0.0.5)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
     capistrano-harrow (0.5.3)
     capistrano-rails (1.2.0)
       capistrano (~> 3.1)
@@ -135,6 +138,7 @@ DEPENDENCIES
   byebug
   capistrano
   capistrano-bundler
+  capistrano-eye
   capistrano-rails
   capistrano-rbenv
   dotenv
