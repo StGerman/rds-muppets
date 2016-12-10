@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   scope 'girl/:slug' do
     resources :emojis, only: [:new, :create]
   end
+
+  resources :visits, only: [:create], format: [:json]
 end
