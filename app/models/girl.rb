@@ -4,6 +4,8 @@ class Girl < ApplicationRecord
 
   before_validation :set_slug
 
+  has_many :emojis
+
   private
 
   def set_slug
