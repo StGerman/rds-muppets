@@ -42,6 +42,7 @@ set :rbenv_ruby, File.read('.ruby-version').strip
 
 set :eye_env, -> { { rails_env: fetch(:rails_env) } }
 set :eye_config, -> { "#{current_path}/config/eye.rb" }
+set :eye_application, fetch(:application)
 
 # Default value for keep_releases is 5
 set :keep_releases, 30
