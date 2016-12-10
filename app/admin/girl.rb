@@ -7,6 +7,9 @@ ActiveAdmin.register Girl do
     column :slug
     column :nickname
     column :photo_url
+    column 'Photo' do |girl|
+      image_tag girl.photo_url, height: 150
+    end
     column :created_at
     actions
   end
