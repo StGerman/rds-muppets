@@ -12,11 +12,11 @@ end
 5.times { User.create } if User.count < 5
 
 girls = [
-  { nickname: 'Alisa',    photo_url: 'http://goldengirls.ru/upload/iblock/f3d/alisa.jpg' },
-  { nickname: 'Michelle', photo_url: 'http://goldengirls.ru/upload/iblock/4c6/gallery2.jpg' },
-  { nickname: 'Andrea',   photo_url: 'http://goldengirls.ru/upload/iblock/217/gallery3.jpg' },
-  { nickname: 'Susan',    photo_url: 'http://goldengirls.ru/upload/iblock/5ad/gallery4.jpg' },
-  { nickname: 'Jessica',  photo_url: 'http://goldengirls.ru/upload/iblock/734/gallery5.jpg' }
+  { nickname: 'Alisa',    photo_url: 'https://goldengirls.ru/upload/iblock/f3d/alisa.jpg' },
+  { nickname: 'Michelle', photo_url: 'https://goldengirls.ru/upload/iblock/4c6/gallery2.jpg' },
+  { nickname: 'Andrea',   photo_url: 'https://goldengirls.ru/upload/iblock/217/gallery3.jpg' },
+  { nickname: 'Susan',    photo_url: 'https://goldengirls.ru/upload/iblock/5ad/gallery4.jpg' },
+  { nickname: 'Jessica',  photo_url: 'https://goldengirls.ru/upload/iblock/734/gallery5.jpg' }
 ]
 
 Girl.create(girls)
