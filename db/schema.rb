@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210122637) do
+ActiveRecord::Schema.define(version: 20161210140158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,12 +44,31 @@ ActiveRecord::Schema.define(version: 20161210122637) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "emojis", force: :cascade do |t|
+    t.integer  "girl_id"
+    t.integer  "user_id"
+    t.integer  "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "girls", force: :cascade do |t|
     t.string   "slug"
     t.string   "nickname"
     t.string   "photo_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "emojis_count"
+    t.index ["emojis_count"], name: "index_girls_on_emojis_count", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "nickname"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "emojis_count"
+    t.index ["emojis_count"], name: "index_users_on_emojis_count", using: :btree
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true, using: :btree
   end
 
 end
