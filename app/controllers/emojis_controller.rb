@@ -16,7 +16,7 @@ class EmojisController < ApplicationController
   protected
 
   def kind
-    :love
+    params[:emoji_kind] || :love
   end
 
   def girl

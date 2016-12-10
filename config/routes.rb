@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
 
   resources :visits, only: [:create], format: [:json]
-  resources :ratings, only: [:index], format: [:json]
+  resource :rating, only: [:show], format: [:json]
 end
