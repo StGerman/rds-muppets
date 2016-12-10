@@ -5,4 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@striphack.com', password: '12345678', password_confirmation: '12345678')
+unless AdminUser.find_by(email: 'admin@striphack.com')
+  AdminUser.create!(email: 'admin@striphack.com', password: '12345678', password_confirmation: '12345678')
+end
+
+5.times { User.create } if User.count < 5
