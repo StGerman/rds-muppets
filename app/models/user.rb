@@ -4,4 +4,8 @@ class User < ApplicationRecord
   before_save do |u|
     u.nickname = Faker::Hipster.word
   end
+
+  def to_s
+    nickname
+  end
 end
