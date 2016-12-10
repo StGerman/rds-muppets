@@ -81,5 +81,7 @@ test:
 production:
   <<: *default
   database: muppets_production
-  username: muppets
+  host: localhost
+  port: 5432
+  username: postgres
   password: <%= ENV['MUPPETS_DATABASE_PASSWORD'] %>
