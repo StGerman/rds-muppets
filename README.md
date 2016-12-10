@@ -34,8 +34,18 @@ GET: http://localhost:3000/girls/redfenf/emoji/new.json
 
 ### Ручка для постинга эмоджи
 POST: http://localhost:3000/girls/redfenf/emoji.json
-Постить можно все что угодно входящие параметры мы не проверяем
-Если все прошло хорошо status: 200
+
+параметр: `emoji_kind`
+  - love
+  - hate
+  - crazy
+  - surprised
+
+Если ничего не пришло на беке выставлется `love`
+Если все хорошо status: 200
+
+### Рейтинг
+
 
 ### Доступы в базу
 

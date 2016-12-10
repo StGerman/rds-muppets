@@ -31,3 +31,13 @@ Girl.create(girls)
 end if Emoji.count < 50
 
 5.times { VisitCode.create } if VisitCode.count < 5
+
+50.times do
+  date = rand(30).days.ago
+  Visit.create(
+    user: User.all.to_a.sample,
+    visit_code: VisitCode.all.to_a.sample
+    created_at: date,
+    updated_at: date,
+  )
+end if Visit.count < 50

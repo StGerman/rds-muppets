@@ -1,8 +1,8 @@
 class EmojisController < ApplicationController
+  respond_to :json
+
   def new
-    respond_to do |format|
-      format.json { render json: girl.to_json }
-    end
+    respond_with girl
   end
 
   def create
@@ -16,10 +16,10 @@ class EmojisController < ApplicationController
   protected
 
   def kind
-    :love
+    params[:emoji_kind] || :love
   end
 
   def girl
-    @girl ||= Girl.order("RANDOM()").first
+    @girl ||= Girl.find_by(slug: params[:girl_id])
   end
 end
