@@ -10,6 +10,9 @@ var {
   StyleSheet
 } = require('react-native');
 
+var raiting = require('./raiting');
+var girls = require('./girls');
+
 var GirlPage = React.createClass({
   getInitialState() {
     return {
@@ -60,12 +63,36 @@ var GirlPage = React.createClass({
             <Text style={styles.emojiItem}>😳</Text>
           </TouchableOpacity>
         </View>
+        <View style={{
+          marginTop: 20
+        }}>
+          <TouchableOpacity onPress={this._goToGuests}>
+            <Text style={styles.raitings}>Гости</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this._goToGirls}>
+            <Text style={styles.raitings}>Девушки</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   },
 
   _love: function() {
     // this.state.emojis_count = 1
+  },
+
+  _goToGuests: function() {
+    this.props.navigator.push({
+      component: raiting,
+      title: 'raiting'
+    });
+  },
+
+  _goToGirls: function() {
+    this.props.navigator.push({
+      component: girls,
+      title: 'girls'
+    });
   }
 });
 
@@ -95,6 +122,10 @@ var styles = StyleSheet.create({
   emojiItem: {
     height: 55,
     fontSize: 50
+  },
+  raitings: {
+    fontSize: 14,
+    fontWeight: '200'
   }
 });
 
