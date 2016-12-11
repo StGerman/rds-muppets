@@ -70,7 +70,9 @@ var GirlPage = React.createClass({
       contentMessage = (
         <View style={styles.contentWelcomeContainer}>
           <Text style={{
-            color: 'red'
+            color: 'black',
+            fontWeight: 'bold',
+            fontSize: 45
           }}>Добро пожаловать!</Text>
         </View>
       )
@@ -80,15 +82,14 @@ var GirlPage = React.createClass({
           <Image
             style={{
               width: 380, 
-              height: 350,
+              height: 450,
             }}
             source={{uri: $this.state.girl.photo_url || 'https://goldengirls.ru/upload/iblock/734/gallery5.jpg'}}
           />
           <Text style={styles.name}>{$this.state.girl.nickname}</Text>
-          <Text>Лайков: {$this.state.girl.emojis_count}</Text>
           <View style={styles.emojiContainer}>
             <TouchableOpacity onPress={$this._love}>
-              <Text style={styles.emojiItem}>😍</Text>
+              <Text style={styles.emojiItem}>❤️</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={$this._hate}>
               <Text style={styles.emojiItem}>😡</Text>
@@ -138,7 +139,8 @@ var GirlPage = React.createClass({
 
 var styles = StyleSheet.create({
   hidden: {
-    height: 0, opacity: 0
+    height: 0, 
+    opacity: 0
   },
   container: {
     flex: 1,
@@ -161,7 +163,6 @@ var styles = StyleSheet.create({
     color: 'red'
   },
   emojiContainer: {
-    marginTop: 10,
     flexWrap: 'wrap', 
     alignItems: 'flex-start',
     flexDirection:'row',
