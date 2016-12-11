@@ -30,9 +30,11 @@ var QRCodeScreen = React.createClass({
       VibrationIOS.vibrate();
       $this.props.navigator.push({
         component: GirlPage,
-        title: 'GirlPage'
+        title: 'GirlPage',
+        passProps: {
+          girls: result.data
+        }
       });
-      // $this.props.onSucess(result.data);
     }
   },
 

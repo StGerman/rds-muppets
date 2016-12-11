@@ -12,45 +12,6 @@ var {
 } = require('react-native');
 
 var QRCodeScreen = require('./QRCodeScreen');
-var GirlPage = require('./GirlPage');
-
-// GirlPage ==================================
-
-var GirlPage = React.createClass({
-  render: function() {
-    var girl = {
-      "id":4,
-      "slug":"1013a47",
-      "nickname":"Susan",
-      "photo_url":"http://goldengirls.ru/upload/iblock/5ad/gallery4.jpg",
-      "created_at":"2016-12-10T13:56:58.673Z",
-      "updated_at":"2016-12-10T13:56:58.673Z",
-      "emojis_count":null
-    };
-
-    return (
-      <View style={styles.contentContainer}>
-        <Image
-          style={{
-            width: 255, 
-            height: 378,
-          }}
-          source={{uri: 'https://pbs.twimg.com/media/ChyDSe5XAAEIIG2.jpg'}}
-        />
-        <Text style={styles.name}>{girl.nickname}</Text>
-        <Text>Лайкнули {girl.emojis_count} раз</Text>
-        <View>
-          <TouchableOpacity onPress={this._onPressQRCode}>
-            <Image />
-          </TouchableOpacity>
-        </View>
-      </View>
-
-    );
-  },
-});
-
-// --- GirlPage ==================================
 
 var qrtest = React.createClass({
   render: function() {
@@ -115,10 +76,11 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
   },
   name: {
+    marginTop: 20,
     fontSize: 19,
     fontWeight: 'bold',
     color: 'red'
   }
 });
 
-AppRegistry.registerComponent('qrtest', () => GirlPage);
+AppRegistry.registerComponent('qrtest', () => qrtest);
