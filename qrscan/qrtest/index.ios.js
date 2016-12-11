@@ -12,6 +12,7 @@ var {
 } = require('react-native');
 
 var QRCodeScreen = require('./QRCodeScreen');
+var GirlPage = require('./GirlPage');
 
 var qrtest = React.createClass({
   render: function() {
@@ -34,15 +35,7 @@ var Index = React.createClass({
     return (
       <View style={styles.contentContainer}>
         <TouchableOpacity onPress={this._onPressQRCode}>
-          <Image
-            style={{
-              width: 50, 
-              height: 50,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            source={{uri: 'https://storiesforsunday.files.wordpress.com/2014/06/smirking-emoji.jpeg'}}
-          /><Text>Прочитать QR code </Text>
+          <Text>Read QRCode</Text>
         </TouchableOpacity>
       </View>
     );

@@ -13,6 +13,13 @@ var {
 var raiting = require('./raiting');
 var girls = require('./girls');
 
+function getUrl(slug = '1134c8d') {
+  if (slug.length > 8) {
+    return 'welcome';
+  }
+  return 'https://128.199.44.75/girls/' + slug + '/emoji/new.json'
+}
+
 var URL = 'https://128.199.44.75/girls/1134c8d/emoji/new.json';
 
 var GirlPage = React.createClass({
@@ -20,68 +27,94 @@ var GirlPage = React.createClass({
     return {
       // random default data
       girl: {
-        nickname: 'Кристина',
-        photo_url: 'https://pbs.twimg.com/media/ChyDSe5XAAEIIG2.jpg',
-        emojis_count: '83'
+        nickname: '',
+        photo_url: '',
+        emojis_count: ''
       }
     };
   },
 
   componentDidMount: function(){ 
-    this.gerGirl(URL); 
+    this.gerGirl(getUrl(this.props.girls)); 
   },
 
   gerGirl: function(link){
-    fetch(link)
-      .then(response => response.text())
-      .then(data => {
-        var girl = JSON.parse(data);
-
-        this.setState({girl});
+    if (link === 'welcome') {
+      this.setState({
+        welcome: 'Добро пожаловать!'
       })
-      .catch((error) => {
-        console.warn(error);
-      });
+    } else {
+      fetch(link)
+        .then(response => response.text())
+        .then(data => {
+          var girl = JSON.parse(data);
+          this.setState({girl});
+        })
+        .catch((error) => {
+          console.warn(error);
+        });
+    }
   },
 
   render: function() {
-    return (
-      <View style={styles.contentContainer}>
-        <Image
-          style={{
-            width: 380, 
-            height: 200,
-          }}
-          source={{uri: this.state.girl.photo_url}}
-        />
-        <Text style={styles.name}>{this.state.girl.nickname}</Text>
-        <Text>Лайков: {this.state.girl.emojis_count}</Text>
-        <View style={styles.emojiContainer}>
-          <TouchableOpacity onPress={this._love}>
-            <Text style={styles.emojiItem}>😍</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._hate}>
-            <Text style={styles.emojiItem}>😡</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._crazy}>
-            <Text style={styles.emojiItem}>😜</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._surprized}>
-            <Text style={styles.emojiItem}>😳</Text>
-          </TouchableOpacity>
+    var welcome = false;
+    var $this = this;
+    
+    if (this.state.welcome) {
+      welcome = true;
+    }
+
+    var contentMessage = <Text></Text>;
+
+    if (welcome) {
+      contentMessage = (
+        <View style={styles.contentWelcomeContainer}>
+          <Text style={{
+            color: 'red'
+          }}>Добро пожаловать!</Text>
         </View>
-        <View style={{
-          marginTop: 20
-        }}>
-          <TouchableOpacity onPress={this._goToGuests}>
-            <Text style={styles.raitings}>Гости</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this._goToGirls}>
-            <Text style={styles.raitings}>Девушки</Text>
-          </TouchableOpacity>
+      )
+    } else {
+      contentMessage = (
+        <View style={this.state.welcome ? styles.hidden : styles.contentContainer}>
+          <Image
+            style={{
+              width: 380, 
+              height: 350,
+            }}
+            source={{uri: $this.state.girl.photo_url || 'https://goldengirls.ru/upload/iblock/734/gallery5.jpg'}}
+          />
+          <Text style={styles.name}>{$this.state.girl.nickname}</Text>
+          <Text>Лайков: {$this.state.girl.emojis_count}</Text>
+          <View style={styles.emojiContainer}>
+            <TouchableOpacity onPress={$this._love}>
+              <Text style={styles.emojiItem}>😍</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={$this._hate}>
+              <Text style={styles.emojiItem}>😡</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={$this._crazy}>
+              <Text style={styles.emojiItem}>😜</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={$this._surprized}>
+              <Text style={styles.emojiItem}>😳</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={{
+            marginTop: 20
+          }}>
+            <TouchableOpacity onPress={$this._goToGuests}>
+              <Text style={styles.raitings}>Гости</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={$this._goToGirls}>
+              <Text style={styles.raitings}>Девушки</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    );
+      )
+    }
+
+    return contentMessage;
   },
 
   _love: function() {
@@ -104,11 +137,19 @@ var GirlPage = React.createClass({
 });
 
 var styles = StyleSheet.create({
+  hidden: {
+    height: 0, opacity: 0
+  },
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
   },
   contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  contentWelcomeContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
