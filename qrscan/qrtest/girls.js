@@ -6,6 +6,7 @@ var {
   View,
   Text,
   Image,
+  ScrollView,
   StyleSheet
 } = require('react-native');
 
@@ -84,49 +85,59 @@ var GirlsList = React.createClass({
   },
 
   render: function() {
-    var rows = [
-      <View>
-        <Text style={styles.name}>Девушка</Text>
-        <Text style={styles.photo_url}>Фото</Text>
-        <Text style={styles.emojis_today}>Кол-во лайков</Text>
-      </View>  
-    ];
+    var rows = [];
     this.state.girls.forEach(function(item, i) {
       rows.push(
-        <View style={styles.emojiContainer} key={i}>
+        <View style={styles.girlsRow} key={i}>
           <Text style={styles.name}>{item.nickname}</Text>
+          <Text style={styles.emojis_count}>😍 {item.emojis_count}</Text>
           <Image
             style={{
-              width: 100, 
-              height: 100,
+              width: 300, 
+              height: 300,
             }}
             source={{uri: item.photo_url}}
           />
-          <Text style={styles.emojis_today}>{item.emojis_today}</Text>
         </View>  
       );
     });
     return (
       <View style={styles.contentContainer}>
-        <Text>Рейтинг гостей</Text>
-        {rows}
+        <Text style={{
+          marginBottom: 30,
+          fontWeight: 'bold'
+        }}>Рейтинг девушек</Text>
+        <ScrollView>
+          {rows}
+        </ScrollView>
       </View>
     );
   }
 });
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
   contentContainer: {
     flex: 1,
+    paddingTop: 50,
+    paddingBottom: 50,
     alignItems: 'center',
     justifyContent: 'center',
   },
   emojiContainer: {
     flexDirection: 'row'
+  },
+  girlsRow: {
+    height: 305,
+    marginBottom: 70
+  },
+  name: {
+    marginBottom: 0,
+    fontWeight: 'bold'
+  },
+  emojis_count: {
+    color: 'red',
+    marginBottom: 5,
+    fontWeight: 'bold'
   }
 });
 
