@@ -25,6 +25,7 @@ ActiveAdmin.register Girl do
 
   form do |f|
     f.inputs 'Girl Details' do
+      f.input :slug
       f.input :nickname
       f.input :photo_url
     end
