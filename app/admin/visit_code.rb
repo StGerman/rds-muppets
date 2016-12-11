@@ -1,4 +1,6 @@
 ActiveAdmin.register VisitCode do
+  permit_params :qr_seed
+
   index do
     selectable_column
     id_column
