@@ -5,6 +5,7 @@ var React = require('react');
 var {
   View,
   Text,
+  ScrollView,
   StyleSheet
 } = require('react-native');
 
@@ -61,41 +62,52 @@ var Raiting = React.createClass({
   },
 
   render: function() {
-    var rows = [
-      <View>
-        <Text style={styles.name}>Имя Гостя</Text>
-        <Text style={styles.emojis_today}>Кол-во лайков</Text>
-      </View>  
-    ];
+    var rows = [];
     this.state.raiting.forEach(function(item, i) {
       rows.push(
-        <View style={styles.emojiContainer} key={i}>
+        <View style={styles.guestRow} key={i}>
           <Text style={styles.name}>{item.nickname}</Text>
-          <Text style={styles.emojis_today}>{item.emojis_today}</Text>
+          <Text style={styles.emojis_count}>😍 {item.emojis_today}</Text>
         </View>  
       );
     });
     return (
       <View style={styles.contentContainer}>
-        <Text>Рейтинг гостей</Text>
-        {rows}
+        <Text style={{
+          marginBottom: 30,
+          marginLeft: 90,
+          fontWeight: 'bold'
+        }}>Рейтинг гостей</Text>
+        <ScrollView>
+          {rows}
+        </ScrollView>
       </View>
     );
   }
 });
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 50,
+    paddingBottom: 50,
+    paddingLeft: 50
   },
   emojiContainer: {
     flexDirection: 'row'
+  },
+  guestRow: {
+    height: 35,
+    marginBottom: 30
+  },
+  name: {
+    marginBottom: 0,
+    fontWeight: 'bold'
+  },
+  emojis_count: {
+    color: 'red',
+    marginBottom: 5,
+    fontWeight: 'bold'
   }
 });
 
