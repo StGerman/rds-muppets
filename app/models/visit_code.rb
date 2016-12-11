@@ -12,7 +12,7 @@ class VisitCode < ApplicationRecord
   private
 
   def set_seed
-    self.qr_seed = Digest::MD5.hexdigest(
+    self.qr_seed ||= Digest::MD5.hexdigest(
       "#{created_at}#{rand(10..100_000)}"
     )
   end
