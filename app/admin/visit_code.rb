@@ -16,6 +16,7 @@ ActiveAdmin.register VisitCode do
 
   form do |f|
     f.inputs "Admin Details" do
+      f.input :qr_seed
     end
     f.actions
   end
