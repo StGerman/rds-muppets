@@ -5,6 +5,10 @@ class VisitCode < ApplicationRecord
 
   before_validation :set_seed
 
+  def to_s
+    name
+  end
+
   private
 
   def set_seed

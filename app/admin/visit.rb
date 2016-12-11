@@ -6,7 +6,7 @@ ActiveAdmin.register Visit do
       visit.user.nickname
     end
     column 'Visit Code' do |visit|
-      visit.visit_code.qr_seed
+      visit.visit_code.name
     end
     column :created_at
     actions

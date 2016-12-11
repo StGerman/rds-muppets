@@ -4,6 +4,7 @@ ActiveAdmin.register VisitCode do
   index do
     selectable_column
     id_column
+    column :name
     column :qr_seed
     column 'QR Code' do |code|
       link_to download_qr_admin_visit_code_path(code, size: 1024) do
