@@ -13,31 +13,38 @@ var {
 var raiting = require('./raiting');
 var girls = require('./girls');
 
+var URL = 'https://128.199.44.75/girls/1134c8d/emoji/new.json';
+
 var GirlPage = React.createClass({
   getInitialState() {
     return {
-      nickname: 'Кристина',
-      photo_url: 'https://pbs.twimg.com/media/ChyDSe5XAAEIIG2.jpg',
-      emojis_count: '83'
+      // random default data
+      girl: {
+        nickname: 'Кристина',
+        photo_url: 'https://pbs.twimg.com/media/ChyDSe5XAAEIIG2.jpg',
+        emojis_count: '83'
+      }
     };
   },
 
-  render: function() {
-    fetch('https://128.199.44.75/girls/1134c8d/emoji/new.json')
+  componentDidMount: function(){ 
+    this.gerGirl(URL); 
+  },
+
+  gerGirl: function(link){
+    fetch(link)
       .then(response => response.text())
       .then(data => {
         var girl = JSON.parse(data);
 
-        this.setState({
-          nickname: girl.nickname,
-          photo_url: girl.photo_url,
-          emojis_count: girl.emojis_count
-        })
+        this.setState({girl});
       })
       .catch((error) => {
         console.warn(error);
       });
+  },
 
+  render: function() {
     return (
       <View style={styles.contentContainer}>
         <Image
@@ -45,10 +52,10 @@ var GirlPage = React.createClass({
             width: 380, 
             height: 200,
           }}
-          source={{uri: this.state.photo_url}}
+          source={{uri: this.state.girl.photo_url}}
         />
-        <Text style={styles.name}>{this.state.nickname}</Text>
-        <Text>Лайков: {this.state.emojis_count}</Text>
+        <Text style={styles.name}>{this.state.girl.nickname}</Text>
+        <Text>Лайков: {this.state.girl.emojis_count}</Text>
         <View style={styles.emojiContainer}>
           <TouchableOpacity onPress={this._love}>
             <Text style={styles.emojiItem}>😍</Text>
