@@ -125,14 +125,14 @@ var GirlPage = React.createClass({
   _goToGuests: function() {
     this.props.navigator.push({
       component: raiting,
-      title: 'raiting'
+      title: 'Мистер "Кутёж"'
     });
   },
 
   _goToGirls: function() {
     this.props.navigator.push({
       component: girls,
-      title: 'girls'
+      title: 'Артистки GoldenGirls'
     });
   }
 });

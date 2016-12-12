@@ -23,42 +23,16 @@ var Raiting = React.createClass({
   },
 
   gerRaiting: function(link){
-    // fetch(link)
-    //   .then(response => response.text())
-    //   .then(data => {
-    //     var raiting = JSON.parse(data);
+    fetch(link)
+      .then(response => response.text())
+      .then(data => {
+        var raiting = JSON.parse(data);
 
-    //     this.setState({raiting});
-    //   })
-    //   .catch((error) => {
-    //     console.warn(error);
-    //   });
-
-    const raiting = [
-      {
-        "emojis_today":0,
-        "id":5,
-        "nickname":"freegan"
-      },{
-        "emojis_today":0,
-        "id":1,
-        "nickname":"tacos"
-      },{
-        "emojis_today":0,
-        "id":2,
-        "nickname":"semiotics"
-      },{
-        "emojis_today":0,
-        "id":4,
-        "nickname":"mlkshk"
-      },{
-        "emojis_today":0,
-        "id":3,
-        "nickname":"+1"
-      }
-    ]; 
-
-    this.setState({raiting});
+        this.setState({raiting});
+      })
+      .catch((error) => {
+        console.warn(error);
+      });
   },
 
   render: function() {
